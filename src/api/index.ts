@@ -1,9 +1,9 @@
 import { Method } from 'axios';
-import { PROD_API } from 'constants/api';
+import { PROD_API, PROD_CMS } from 'constants/api';
 import server from 'utils/request';
 import { API_LIST, API_REQ_TYPES, EXPAND_APIS, EXPAND_REQ_TYPES } from './list';
 import myServer from './server/myServer';
-const { NODE_ENV, REACT_APP_API_ENV } = process.env;
+const { REACT_APP_API_ENV } = process.env;
 export interface IBaseRequest {
   url: string;
   method?: Method;
@@ -44,7 +44,9 @@ export { API_LIST, baseRequest, request };
 
 export function spliceUrl(baseUrl: string, extendArg?: string) {
   let base = '';
-  if (NODE_ENV === 'production' && REACT_APP_API_ENV && baseUrl.slice(0, 4) === '/api')
-    base = PROD_API[REACT_APP_API_ENV] || '';
+  if (REACT_APP_API_ENV) {
+    if (baseUrl.startsWith('/api/')) base = PROD_API[REACT_APP_API_ENV] || PROD_API['mainnet'];
+    if (baseUrl.startsWith('/items/')) base = PROD_CMS[REACT_APP_API_ENV] || PROD_CMS['mainnet'];
+  }
   return base + (extendArg ? baseUrl + '/' + extendArg : baseUrl);
 }

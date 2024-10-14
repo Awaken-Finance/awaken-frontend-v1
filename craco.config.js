@@ -186,12 +186,12 @@ module.exports = {
         changeOrigin: true,
         secure: true,
       },
-      '/cms': {
+      '/items': {
         target: activeApi.cmsApi,
         changeOrigin: true,
         secure: false,
         pathRewrite: {
-          '^/cms': '/',
+          '^/items': '/',
         },
       },
       '/portkey': {

@@ -15,10 +15,11 @@ const AWAKEN_LIST_MAP: { [key: string]: string } = {
   test: 'https://raw.githubusercontent.com/Awaken-Finance/default-token-list/main/build/awaken-default.tokenlist.tdvw.json',
   preview:
     'https://raw.githubusercontent.com/Awaken-Finance/default-token-list/main/build/awaken-default.tokenlist.tdvw.json',
-  main: 'https://raw.githubusercontent.com/Awaken-Finance/default-token-list/main/build/awaken-default.tokenlist.tdvv.json',
+  mainnet:
+    'https://raw.githubusercontent.com/Awaken-Finance/default-token-list/main/build/awaken-default.tokenlist.tdvv.json',
 };
 
-const AWAKEN_TOKEN_LIST_URL = AWAKEN_LIST_MAP[API_ENV || 'main'];
+const AWAKEN_TOKEN_LIST_URL = AWAKEN_LIST_MAP[API_ENV || 'mainnet'];
 
 function useRemoateTokenList() {
   return useSWR(AWAKEN_TOKEN_LIST_URL, (url: string) => fetch(url).then((res) => res.json()));

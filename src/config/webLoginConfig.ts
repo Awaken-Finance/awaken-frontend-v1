@@ -3,9 +3,10 @@ import { CHAIN_INFO as tDVV } from 'constants/platform/aelf-tdvv';
 import { CHAIN_INFO as tDVW } from 'constants/platform/aelf-tdvw';
 import { CHAIN_INFO as tDVV_TEST3 } from 'constants/platform/aelf-tdvv-test3';
 
-const API_ENV = process.env.REACT_APP_API_ENV;
+const API_ENV = process.env.REACT_APP_API_ENV || 'mainnet';
 const APPNAME = 'awaken.finance';
-const WEBSITE_ICON = API_ENV ? 'https://test.awaken.finance/favicon.ico' : 'https://awaken.finance/favicon.ico';
+const WEBSITE_ICON =
+  API_ENV !== 'mainnet' ? 'https://test.awaken.finance/favicon.ico' : 'https://awaken.finance/favicon.ico';
 
 let CHAIN_ID = tDVV.chainId,
   NETWORK = 'MAIN',

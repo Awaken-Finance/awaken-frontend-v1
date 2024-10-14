@@ -55,8 +55,6 @@ switch (API_ENV) {
     break;
 }
 
-// console.log('API_ENV', API_ENV);
-
 export const DEFAULT_CHAIN = defaultChainInfo.CHAIN_INFO.chainId as SupportedELFChainId;
 export const DEFAULT_CHAIN_INFO = defaultChainInfo;
 
