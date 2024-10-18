@@ -1,7 +1,7 @@
 name: Build and Push Image
 on:
   push:
-    branches: ['feature/main-k8s']
+    branches: ['master']
 jobs:
   build-and-push-image:
     runs-on: awaken-runner
